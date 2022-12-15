@@ -9,3 +9,9 @@ module.exports = {
     },
     assetPrefix: isProd ? '/' : '',
 };
+
+// const nextConfig = {
+//     reactStrictMode: true,
+// }
+//
+// module.exports = nextConfig;

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+jmport Link from 'next/link';
 import Tag from './components/typography/Tag';
 import Display from './components/typography/Display';
 
