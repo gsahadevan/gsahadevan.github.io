@@ -1,32 +1,32 @@
 {
-	"name": "gsahadevan.github.io",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"export": "next export",
-		"start": "next start",
-		"lint": "next lint",
-		"deploy": "touch ./out/.nojekyll && git add out/ && git commit -m \"deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
-	},
-	"dependencies": {
-		"@heroicons/react": "^1.0.5",
-		"@tailwindcss/typography": "^0.4.1",
-		"autoprefixer": "^10.4.0",
-		"babel-plugin-import-glob-array": "^0.2.0",
-		"gray-matter": "^4.0.3",
-		"next": "12.0.2",
-		"next-themes": "0.0.15",
-		"postcss": "^8.3.11",
-		"react": "17.0.2",
-		"react-dom": "17.0.2",
-		"react-markdown": "^7.1.0",
-		"rehype-autolink-headings": "^6.1.0",
-		"rehype-slug": "^5.0.0",
-		"tailwindcss": "^2.2.19"
-	},
-	"devDependencies": {
-		"eslint": "7.32.0",
-		"eslint-config-next": "12.0.2"
-	}
+    "name": "gsahadevan.github.io",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "export": "next export",
+        "start": "next build; next start",
+        "lint": "next lint",
+        "deploy": "touch ./out/.nojekyll && git add out/ && git commit -m \"deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+    },
+    "dependencies": {
+        "@heroicons/react": "^1.0.5",
+        "@tailwindcss/typography": "^0.4.1",
+        "autoprefixer": "^10.4.0",
+        "babel-plugin-import-glob-array": "^0.2.0",
+        "gray-matter": "^4.0.3",
+        "next": "12.0.2",
+        "next-themes": "0.0.15",
+        "postcss": "^8.3.11",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-markdown": "^7.1.0",
+        "rehype-autolink-headings": "^6.1.0",
+        "rehype-slug": "^5.0.0",
+        "tailwindcss": "^2.2.19"
+    },
+    "devDependencies": {
+        "eslint": "7.32.0",
+        "eslint-config-next": "12.0.2"
+    }
 }

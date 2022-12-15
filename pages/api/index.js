@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {join} from 'path';
+import { join } from 'path';
 import matter from 'gray-matter';
 
 const postsDirectory = join(process.cwd(), 'pages/blog/posts');
@@ -16,12 +16,12 @@ export function getPostBySlug(slug) {
 export function getPost(slug) {
     const fullPath = join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const {data, content} = matter(fileContents);
-    return {data, content, slug};
+    const { data, content } = matter(fileContents);
+    return { data, content, slug };
 }
 
 export function getPosts() {
     const slugs = getPostSlugs();
-    const posts = slugs.map((slug) => getPostBySlug(slug));
+    const posts = slugs.map(slug => getPostBySlug(slug));
     return posts;
 }

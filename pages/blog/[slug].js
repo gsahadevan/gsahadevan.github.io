@@ -1,10 +1,10 @@
 import ReactMarkdown from 'react-markdown';
-import {getPost, getPostSlugs} from '../api';
+import { getPost, getPostSlugs } from '../api';
 
-function PostPage({data, content, slug}) {
+function PostPage({ data, content, slug }) {
     return (
         <>
-            <main className="max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl prose">
+            <main className='max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl prose'>
                 <ReactMarkdown>{content}</ReactMarkdown>
             </main>
         </>
@@ -13,25 +13,25 @@ function PostPage({data, content, slug}) {
 
 export async function getStaticPaths() {
     const files = getPostSlugs();
-    const paths = files.map((filename) => ({
+    const paths = files.map(filename => ({
         params: {
-            slug: filename.replace('.mdx', '')
-        }
+            slug: filename.replace('.mdx', ''),
+        },
     }));
     return {
         paths,
-        fallback: false
+        fallback: false,
     };
 }
 
-export async function getStaticProps({params: {slug}}) {
-    const {data, content} = getPost(slug);
+export async function getStaticProps({ params: { slug } }) {
+    const { data, content } = getPost(slug);
     return {
         props: {
             data,
             content,
-            slug
-        }
+            slug,
+        },
     };
 }
 
