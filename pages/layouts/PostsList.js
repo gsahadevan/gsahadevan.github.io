@@ -18,7 +18,7 @@ function PostsList({ posts }) {
             {sortedPosts.map(post => (
                 <div key={post.slug}>
                     <Link href={'/blog/' + post.slug}>
-                        <a className='flex items-start justify-between px-4 py-2 mb-2 -mx-4 space-x-4 transition-colors duration-100 ease-in-out rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'>
+                        <div className='flex items-start justify-between px-4 py-2 mb-2 -mx-4 space-x-4 transition-colors duration-100 ease-in-out rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'>
                             <div>
                                 <span className='block text-sm text-gray-700 dark:text-gray-600 md:hidden'>
                                     {formatDate(post.data.date)}
@@ -42,7 +42,7 @@ function PostsList({ posts }) {
                                     {formatDate(post.data.date)}
                                 </span>
                             </div>
-                        </a>
+                        </div>
                     </Link>
                 </div>
             ))}
