@@ -48,7 +48,11 @@ jspm_packages
 
 # next.js
 /.next/
+<<<<<<< Updated upstream
 /out/
+=======
+# /out/
+>>>>>>> Stashed changes
 
 # production
 /build
