@@ -1,0 +1,30 @@
+---
+title: 'Frequently used Git commands'
+excerpt: 'Frequently used Git commands in my day-to-day life.'
+date: '2023-09-17T05:35:07.322Z'
+draft: false
+tags: [git]
+---
+
+
+# Frequently used Git commands
+
+```shell
+git remote set-url origin https://[username]:[personal-access-token]@github.com/[username]/[branch-name].git
+git clone https://[username]:[personal-access-token]@github.com/[username]/[branch-name].git
+git clone https://[username]@github.com/[username]/[branch-name].git
+
+git branch -d [branch-name]                       # delete local branch
+git branch -D [branch-name]                       # force delete local branch
+git branch -d `git branch --list 'branch-name-*'` # delete multiple local branches with wildcard
+
+git stash          # save modified and staged changes to stash (stack)
+git stash list     # list stashed file changes
+git stash pop      # merge changes from top of stack to current branch
+git stash drop     # delete stash from top of stack
+
+git pull
+git pull origin master --no-rebase
+git pull origin main --no-rebase
+git pull origin [branch-name] --no-rebase
+```
