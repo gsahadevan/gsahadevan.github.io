@@ -2,7 +2,7 @@ function HireMe() {
     return (
         <>
             <main className='max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl'>
-                <h2 className='my-6 text-2xl font-extrabold text-gray-700 dark:text-gray-300'>Hire me</h2>
+                <h2 className='my-6 text-2xl font-extrabold text-gray-700'>Hire me</h2>
                 <p>Not looking for any new roles at the moment!!! Happy where I am right now.</p>
                 <p className='py-2 leading-7'>
                     You could contact me via e-mail if you are looking for someone to meet the below descriptions:

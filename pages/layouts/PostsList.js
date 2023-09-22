@@ -18,18 +18,18 @@ function PostsList({ posts }) {
             {sortedPosts.map(post => (
                 <div key={post.slug}>
                     <Link href={'/blog/' + post.slug}>
-                        <div className='flex items-start justify-between px-4 py-2 mb-2 -mx-4 space-x-4 transition-colors duration-100 ease-in-out rounded-md hover:bg-gray-50 dark:hover:bg-gray-900'>
+                        <div className='flex items-start justify-between px-4 py-2 mb-2 -mx-4 space-x-4 transition-colors duration-100 ease-in-out rounded-md hover:bg-gray-50'>
                             <div>
-                                <span className='block text-sm text-gray-700 dark:text-gray-600 md:hidden'>
+                                <span className='block text-sm text-gray-700 md:hidden'>
                                     {formatDate(post.data.date)}
                                 </span>
-                                <h2 className='text-2xl font-extrabold text-gray-600 dark:text-gray-500'>
+                                <h2 className='text-2xl font-extrabold text-gray-600'>
                                     {post.data.title}
                                 </h2>
-                                <p className='py-4 md:pr-48 leading-7 text-gray-700 dark:text-gray-600'>
+                                <p className='py-4 md:pr-48 leading-7 text-gray-700'>
                                     {post.data.excerpt}
                                 </p>
-                                <div className='inline-block space-x-2 text-gray-700 dark:text-gray-500'>
+                                <div className='inline-block space-x-2 text-gray-700'>
                                     {post.data.tags.map(tag => (
                                         <Tag key={tag}>
                                             <a>#{tag}</a>
@@ -38,7 +38,7 @@ function PostsList({ posts }) {
                                 </div>
                             </div>
                             <div className='flex-shrink-0'>
-                                <span className='hidden text-sm text-gray-700 dark:text-gray-600 md:block'>
+                                <span className='hidden text-sm text-gray-700 md:block'>
                                     {formatDate(post.data.date)}
                                 </span>
                             </div>

@@ -1,13 +1,9 @@
-// import Link from 'next/link';
-import Tag from './components/typography/Tag';
-import Display from './components/typography/Display';
-
 function Home() {
     return (
         <>
             <main className='max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl'>
                 <p>Hello &#128075;</p>
-                <h1 className='my-6 text-4xl font-extrabold text-gray-700 dark:text-gray-300'>
+                <h1 className='my-6 text-4xl font-extrabold text-gray-700'>
                     I am Gauthaman Sahadevan
                 </h1>
                 <p className='pb-2 leading-7'>
@@ -24,7 +20,7 @@ function Home() {
                     technology stack of my interest and develop personal pet projects.
                 </p>
 
-                <h2 className='my-6 text-2xl font-extrabold text-gray-700 dark:text-gray-300'>
+                <h2 className='my-6 text-2xl font-extrabold text-gray-700'>
                     My current interests include
                 </h2>
                 <ul className='list-disc list-outside pl-5 leading-7'>
@@ -37,17 +33,17 @@ function Home() {
                 </ul>
 
                 {/**
-                <h2 className='my-6 text-2xl font-extrabold text-gray-700 dark:text-gray-300'>Projects - Frontend</h2>
+                <h2 className='my-6 text-2xl font-extrabold text-gray-700'>Projects - Frontend</h2>
                 <div className='grid gap-4 mb-8 md:grid-cols-3 sm:grid-cols'>
-                    <div className='max-w-sm rounded overflow-hidden shadow-md rounded dark:text-indigo-100 dark:bg-gray-900 cursor-pointer'>
+                    <div className='max-w-sm rounded overflow-hidden shadow-md rounded cursor-pointer'>
                         <div className='px-6 py-4'>
                             <Link href='/green-plug'>
                                 <img className='w-full mb-4' src='images/projects_green_plug.png' alt='Green Plug' />
                             </Link>
-                            <div className='font-bold text-xl mb-2 text-gray-700 dark:text-gray-300'>
+                            <div className='font-bold text-xl mb-2 text-gray-700'>
                                 Angular + Bootstrap 5 Admin Template
                             </div>
-                            <p className='text-gray-700 dark:text-gray-500 text-base'>
+                            <p className='text-gray-700 text-base'>
                                 Modern, Flexible and Responsive Bootstrap 5 Admin Template A professional package that
                                 comes with many of UI components, forms, tables, charts, dashboards, pages and svg
                                 icons.
@@ -60,7 +56,7 @@ function Home() {
                         </div>
                     </div>
 
-                    <div className='max-w-sm rounded overflow-hidden shadow-md rounded dark:text-indigo-100 dark:bg-gray-900 cursor-pointer'>
+                    <div className='max-w-sm rounded overflow-hidden shadow-md rounded cursor-pointer'>
                         <div className='px-6 py-4'>
                             <Link href='/react-tailwind'>
                                 <img
@@ -69,10 +65,10 @@ function Home() {
                                     alt='React Tailwind'
                                 />
                             </Link>
-                            <div className='font-bold text-xl mb-2 text-gray-700 dark:text-gray-300'>
+                            <div className='font-bold text-xl mb-2 text-gray-700'>
                                 React + Tailwind Dashboard Template
                             </div>
-                            <p className='text-gray-700 dark:text-gray-500 text-base'>
+                            <p className='text-gray-700 text-base'>
                                 A modern yet elegant dashboard built over React and Tailwind CSS. Has features likes
                                 maps, charts, slide-overs, dark mode etc. Uses d3.js and chart.js for enhancing UI
                                 elements.
