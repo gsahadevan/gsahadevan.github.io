@@ -32,3 +32,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Deploy on GitHub
+
+```bash
+yarn dev # to run and test the application
+git add .
+git commit -m 'Message'
+git push 
+
+yarn build
+yarn export
+yarn deploy # deploy the changes to gh-pages, changes would reflect in 1 min
+```
