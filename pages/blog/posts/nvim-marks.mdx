@@ -1,16 +1,16 @@
 ---
-title: 'How to use marks in nvim'
+title: 'How to use Marks in Neovim'
 excerpt: 'Speed up the your development using marks in nvim'
 date: '2024-05-03T19:35:07.322Z'
 draft: false
 tags: [vim, nvim, marks]
 ---
 
-# Intro
+# How to use Marks in Neovim
 
 Going to cover marks in nvim, which could also be thought of as bookmarks. Marks is a core vim feature, so it doesn't require any special plugins. The marks feature allows us to easily move / jump around important points in a file (or in different files).
 
-# How I use it?
+## How I use it?
 
 As a developer; I would be working on a feature, the code for which would span across multiple files. I would create marks for certain positions in a single file or across multiple files. This would help me jump around these positions, saving me countless minutes in switching between the files if I had to do it manually.
 
@@ -26,7 +26,7 @@ I rarely delete marks. Lowercase marks `'a` to `'z` are remembered as long as th
 
 The lowercase marks can be used in combination with operators as well. For example: `d't` would delete the lines from the cursor position to the mark `t`. Generally I would use mark `t` for top and `b` for bottom etc.
 
-# List of commands useful for marks
+## List of commands useful for marks
 
 ```shell
 Command       | Operation
@@ -48,12 +48,11 @@ m{a-zA-Z}     | Sets the mark, for example `ma`
 :delmarks!    | Deletes all marks for current buffer (with lowercase {a-z})
 ```
 
-# References and further reading
+## References and further reading
 1. [Marks in Vim Are A Game Changer](https://www.youtube.com/watch/XT_kFia3Ua4)
 2. [Marks & Folds - Vim Tips (5)](https://www.youtube.com/watch?v=ovRqGybIg1Q&ab_channel=BenKadel)
-3. :help marks
-4. [Plugin to view marks on the sign column](https://github.com/chentoast/marks.nvim)
+3. [Plugin to view marks on the sign column](https://github.com/chentoast/marks.nvim)
+4. :help marks
+5. :help jumps
+6. :help changes
 
-### Further reading, related topics
-1. Jumps
-2. Changes
