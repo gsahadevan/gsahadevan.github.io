@@ -42,3 +42,8 @@ export function getPosts() {
     const posts = slugs.map(slug => getPostBySlug(slug));
     return posts;
 }
+
+export function getAllSlugs() {
+    const slugs = getPostSlugs();
+    return slugs.map(slug => slug.replace(/\.mdx$/,  ''));
+}

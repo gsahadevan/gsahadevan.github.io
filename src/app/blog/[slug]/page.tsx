@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { getPostContent } from '../../../api';
+import { getAllSlugs, getPostContent } from '../../../api';
+
+export const generateStaticParams = async () => {
+    const slugs = getAllSlugs();
+    return slugs.map((slug) => ({
+        slug: slug,
+    }));
+}
 
 const BlogPage = (props: any) => {
     const slug = props.params.slug;
