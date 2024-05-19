@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function HireMePage() {
     return (
@@ -27,7 +27,7 @@ export default function HireMePage() {
                     4+ years of <strong>Team Lead</strong> experience
                 </li>
             </ul>
-            {/* <img className="mx-auto h-screen py-10" src="images/resume.png" alt="Resume - Gauthaman Sahadevan" /> */}
+            {/* <img className='mx-auto h-screen py-10' src='images/resume.png' alt='Resume - Gauthaman Sahadevan' /> */}
         </main>
     );
 }

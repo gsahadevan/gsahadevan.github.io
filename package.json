@@ -13,7 +13,6 @@
     "dependencies": {
         "@heroicons/react": "^1.0.6",
         "@next/font": "13.0.7",
-        "@tailwindcss/typography": "^0.4.1",
         "@types/jest": "^29.4.0",
         "autoprefixer": "^10.4.14",
         "babel-plugin-import-glob-array": "^0.2.0",
@@ -27,6 +26,7 @@
         "rehype-slug": "^5.1.0"
     },
     "devDependencies": {
+        "@tailwindcss/typography": "^0.5.13",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
