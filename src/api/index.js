@@ -18,6 +18,7 @@ export function getBlogMetadata(slug) {
     return {
         title: data.title,
         excerpt: data.description,
+        image: data.image,
         date: data.date,
         slug: slug
     };
