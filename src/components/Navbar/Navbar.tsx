@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { JSX } from 'react';
+import React, { JSX } from 'react';
 
 const Navbar = (): JSX.Element => {
     return (

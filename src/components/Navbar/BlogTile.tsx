@@ -1,6 +1,6 @@
-import formatDate from '@/utils/format';
 import Link from 'next/link';
-import { JSX } from 'react';
+import React, { JSX } from 'react';
+import formatDate from '../../utils/format';
 
 const BlogTile = ({ post }: { post: any }): JSX.Element => {
     return (

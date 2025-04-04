@@ -1,10 +1,19 @@
+# ignore files and directories for Prettier formatting
+
+# hidden files
 .cache
 .vscode
+
+# lock files
 package.json
 package-lock.json
+
+# folders
 public
 static
 node_modules
+
+# build artifacts
 */*/lib
 */*/build
 */*/dist

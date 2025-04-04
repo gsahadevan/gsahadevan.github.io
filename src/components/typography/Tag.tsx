@@ -1,4 +1,4 @@
-import { JSX, ReactNode } from "react";
+import React, { JSX, ReactNode } from "react";
 
 const Tag = ({ children }: { children: ReactNode }): JSX.Element => {
     return (
