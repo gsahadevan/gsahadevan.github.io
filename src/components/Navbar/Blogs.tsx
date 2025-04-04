@@ -1,7 +1,5 @@
-import Link from 'next/link';
-import formatDate from '../../utils/format';
-import Tag from '../typography/Tag';
 import BlogTile from './BlogTile';
+import { JSX } from 'react';
 
 const Blogs = ({ posts }: { posts: any }): JSX.Element => {
     if (!posts) {
@@ -17,7 +15,7 @@ const Blogs = ({ posts }: { posts: any }): JSX.Element => {
     return (
         <>
             {sortedPosts.map((post: any) => (
-                <BlogTile post={post} />
+                <BlogTile key={post.slug} post={post} />
             ))}
         </>
     );

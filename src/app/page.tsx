@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Home() {
+const Home = () => {
     return (
         <main className='max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl'>
             <p>Hello &#128075;</p>
@@ -87,3 +87,5 @@ export default function Home() {
         </main>
     );
 }
+
+export default Home;

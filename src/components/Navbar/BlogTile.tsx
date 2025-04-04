@@ -1,9 +1,10 @@
 import formatDate from '@/utils/format';
 import Link from 'next/link';
+import { JSX } from 'react';
 
 const BlogTile = ({ post }: { post: any }): JSX.Element => {
     return (
-        <div key={post.slug} className='transition-colors duration-100 ease-in-out hover:bg-gray-100 rounded-lg'>
+        <div className='transition-colors duration-100 ease-in-out hover:bg-gray-100 rounded-lg'>
             <Link href={'/blog/' + post.slug}>
                 <img className='rounded-t-lg' src={post.data.image} alt='' />
                 <div className='p-4 flex flex-col justify-between'>
@@ -22,4 +23,5 @@ const BlogTile = ({ post }: { post: any }): JSX.Element => {
     );
 };
 
+BlogTile.displayName = 'BlogTile';
 export default BlogTile;
