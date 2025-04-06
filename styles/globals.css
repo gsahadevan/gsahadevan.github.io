@@ -8,6 +8,7 @@
 
 body {
     color: rgb(var(--foreground-rgb));
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 @layer utilities {

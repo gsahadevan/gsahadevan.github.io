@@ -3,8 +3,8 @@ import React, { JSX } from 'react';
 
 const Navbar = (): JSX.Element => {
     return (
-        <nav className='max-w-2xl py-4 px-8 mx-auto lg:max-w-10xl'>
-            <div className='flex items-center justify-between'>
+        <nav className='max-w-2xl py-4 px-8 mx-auto lg:max-w-5xl'>
+            <div className='p-4 flex items-center justify-between'>
                 <Link href='/'>Gauthaman Sahadevan</Link>
                 <ul className='hidden md:flex justify-end space-x-12'>
                     <li>

@@ -1,4 +1,4 @@
-import BlogTile from './BlogTile';
+import { BlogTile } from './BlogTile';
 import { JSX } from 'react';
 
 const Blogs = ({ posts }: { posts: any }): JSX.Element => {
