@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../../styles/globals.css';
+import '../../styles/prism.css';
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
+import { Navbar } from '../components/Navbar/Navbar';
+import { Footer } from '@/components/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +23,7 @@ const RootLayout = ({
             <body className={inter.className}>
                 <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     );
