@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, JSX } from 'react';
 import { useTheme } from 'next-themes';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
-const ThemeSwitcher = () => {
+export const ThemeSwitcher = (): JSX.Element => {
 
     const [mounted, setMounted] = useState(false);
     const { setTheme, resolvedTheme } = useTheme();
@@ -15,7 +15,7 @@ const ThemeSwitcher = () => {
     }, []);
 
     if (!mounted) {
-        return null;
+        return <></>;
     }
 
     return (
@@ -30,6 +30,3 @@ const ThemeSwitcher = () => {
         </div>
     )
 };
-
-ThemeSwitcher.displayName = 'ThemeSwitcher';
-export default ThemeSwitcher;

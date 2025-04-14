@@ -32,10 +32,10 @@ export const getBlogMetadata = (slug: string): IPostMetadata => {
     };
 }
 
-export const generateStaticParams = () => {
-    const blogs = getBlogMetadata();
-    return blogs.map((blog) => ({ slug: blog.slug }));
-}
+// export const generateStaticParams = () => {
+//     const blogs = getBlogMetadata();
+//     return blogs.map((blog: any) => ({ slug: blog.slug }));
+// }
 
 export const getPostSlugs = () => {
     return fs.readdirSync(postsDirectory);

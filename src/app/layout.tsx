@@ -4,8 +4,8 @@ import '../../styles/globals.css';
 import '../../styles/prism.css';
 // import '../../styles/spotlight.css';
 import React from 'react';
-import { Navbar } from '../components/Navbar/Navbar';
-import { Footer } from '@/components/Footer/Footer';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import { ThemeProviders } from './ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -32,7 +32,7 @@ const RootLayout = ({
                     </div>
                     <div className="relative flex w-full flex-col">
                         <ThemeProviders>
-                            <Navbar />
+                            <Header />
                             {children}
                             <Footer />
                         </ThemeProviders>
