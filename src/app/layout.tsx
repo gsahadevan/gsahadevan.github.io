@@ -5,6 +5,7 @@ import '../../styles/prism.css';
 // import '../../styles/spotlight.css';
 import React from 'react';
 import { Header } from '@/components/Header';
+import { Main } from '@/components/Main';
 import { Footer } from '@/components/Footer';
 import { ThemeProviders } from './ThemeProvider';
 
@@ -33,7 +34,7 @@ const RootLayout = ({
                     <div className="relative flex w-full flex-col">
                         <ThemeProviders>
                             <Header />
-                            {children}
+                            <Main>{children}</Main>
                             <Footer />
                         </ThemeProviders>
                     </div>
