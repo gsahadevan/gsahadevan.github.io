@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { getPosts } from '../../api';
-import Blogs from '@/components/Navbar/Blogs';
+import { Blogs } from '@/components/Blogs';
+import { Headline } from '@/components/Typography/Headline';
+import { Copy } from '@/components/Typography/Copy';
 
-export default function BlogListPage() {
+const BlogListPage = (): JSX.Element => {
     return (
-        <main className='max-w-2xl px-8 mx-auto my-10 lg:max-w-5xl'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-                <Blogs posts={getPosts()} />
+        <>
+            <header className="max-w-2xl">
+                <Headline>Writing on software design, coding tools, and the software industry in general.</Headline>
+                <Copy>All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.</Copy>
+            </header>
+            <div className="mt-16 sm:mt-20">
+                <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+                    <div className="flex max-w-3xl flex-col space-y-16">
+                        <Blogs posts={getPosts()} />
+                    </div>
+                </div>
             </div>
-        </main>
+        </>
     );
-}
+};
+
+BlogListPage.displayName = 'BlogListPage';
+export default BlogListPage;

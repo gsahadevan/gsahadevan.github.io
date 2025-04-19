@@ -1,39 +1,67 @@
 {
-    "compilerOptions": {
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "paths": {
-            "@/*": [
-                "./src/*"
-            ]
-        }
-    },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        ".next/types/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "allowJs": true, // Allows JavaScript files to be compiled.
+    "allowSyntheticDefaultImports": true, // Allows importing from modules without default exports.
+    "composite": true, // Enables project references for structured TypeScript projects.
+    "declaration": true, // Generates .d.ts type declaration files.
+    "declarationMap": false, // Generates source maps for .d.ts files.
+    "downlevelIteration": true, // Provides iterator compatibility for older JavaScript targets.
+    "emitDecoratorMetadata": true, // Required for experimental decorator support.
+    "esModuleInterop": true, // Improves compatibility with CommonJS modules.
+    "experimentalDecorators": true, // Enables experimental decorator features.
+    "forceConsistentCasingInFileNames": true, // Enforces consistent file name casing.
+    "incremental": true, // Enables incremental compilation for faster builds.
+    "isolatedModules": true, // Ensures each file can be transpiled independently.
+    "jsx": "preserve", // "jsx": "preserve", Controls how JSX constructs are emitted in JavaScript files.
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ], // Type checking for latest ECMAScript features, DOM, and iterable DOM collections.
+    "module": "commonjs", // "module": "esnext",
+    "moduleResolution": "node", // "moduleResolution": "bundler",
+    "noEmit": true, // Disables emitting compiled JavaScript files.
+    "noFallthroughCasesInSwitch": true, // Warns about fallthrough cases in switch statements.
+    "noImplicitAny": true, // Prevents using 'any' type without explicit declaration.
+    "noImplicitOverride": true, // Enforces explicit 'override' keyword on method overwrites.
+    "noImplicitReturns": true, // Enforces explicit returns in all function code paths.
+    "noImplicitThis": true, // Prevents 'this' from being implicitly typed as 'any'.
+    "noLib": false, // Includes TypeScript's standard declaration files.
+    "noUnusedLocals": false, // Controls warnings about unused local variables.
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }, // Maps module paths to specific directories.
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ], // Enables Next.js specific TypeScript features.
+    "removeComments": false, // Preserves comments in the compiled JavaScript.
+    "resolveJsonModule": true, // Allows importing JSON files as modules.
+    "skipLibCheck": true, // Skips type checks on standard TypeScript declaration files.
+    "sourceMap": false, // Generates source maps for debugging.
+    "strict": true, // Enables all strict type-checking options.
+    "strictBindCallApply": true, // Enforces strict 'bind', 'call', and 'apply'.
+    "strictFunctionTypes": true, // Enforces strict function type checking.
+    "strictNullChecks": true, // Enforces strict null and undefined checks.
+    "strictPropertyInitialization": true, // Enforces property initialization in classes.
+    "target": "ES2017", // Sets the JavaScript language version for emitted code.
+    "useUnknownInCatchVariables": false // Prevents changing catch variable type from 'any' to 'unknown'.
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "typeRoots": [
+    "./node_modules/@types",
+    "./types",
+    "./node_modules/.pnpm/@types*"
+  ]
 }

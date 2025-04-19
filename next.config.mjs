@@ -1,23 +1,16 @@
-// const isProd = process.env.NODE_ENV === 'production';
-// module.exports = {
-//     exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
-//         return {
-//             '/': { page: '/' },
-//             '/blog': { page: '/blog' },
-//             '/hire-me': { page: '/hire-me' },
-//         };
-//     },
-//     assetPrefix: isProd ? '/' : '',
-// };
-//
-// // const nextConfig = {
-// //     reactStrictMode: true,
-// // }
-// //
-// // module.exports = nextConfig;
+import createMDX from '@next/mdx'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-};
+    // Configure `pageExtensions` to include markdown and MDX files
+    pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+    // Optionally, add any other Next.js config below
+}
 
-export default nextConfig;
+const withMDX = createMDX({
+    // Add markdown plugins here, as desired
+    extension: /\.mdx?$/, // Regular expression to match `.md` and `.mdx` files
+})
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig)
