@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-const postsDirectory = join(process.cwd(), 'src/posts');
+const postsDirectory = join(process.cwd(), 'src/data/posts');
 
 export function getPostContent(slug) {
     const fullPath = join(postsDirectory, `${slug}.mdx`);
@@ -20,13 +20,13 @@ export function getBlogMetadata(slug) {
         excerpt: data.description,
         image: data.image,
         date: data.date,
-        slug: slug
+        slug: slug,
     };
 }
 
 export function generateStaticParams() {
     const blogs = getBlogMetadata();
-    return blogs.map((blog) => ({ slug: blog.slug }));
+    return blogs.map(blog => ({ slug: blog.slug }));
 }
 
 export function getPostSlugs() {
@@ -46,5 +46,5 @@ export function getPosts() {
 
 export function getAllSlugs() {
     const slugs = getPostSlugs();
-    return slugs.map(slug => slug.replace(/\.mdx$/,  ''));
+    return slugs.map(slug => slug.replace(/\.mdx$/, ''));
 }
