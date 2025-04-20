@@ -24,8 +24,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'
-            className={`${montserrat.variable} scroll-smooth`}>
+        <html 
+            lang='en'
+            className={`${montserrat.variable} scroll-smooth`}
+            suppressHydrationWarning>
             <body className={`${montserrat.className} h-full bg-zinc-50 dark:bg-black`}>
                 <div className="flex w-full">
                     <div className="fixed inset-0 flex justify-center sm:px-8">
