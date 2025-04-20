@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { ThemeSwitcher } from '../ThemeSwitcher';
+import { JSX } from 'react';
 
 export default function Navbar(): JSX.Element {
 
@@ -19,6 +21,9 @@ export default function Navbar(): JSX.Element {
                                     Hire Me
                                 </span>
                             </Link>
+                        </li>
+                        <li>
+                            <ThemeSwitcher />
                         </li>
                     </ul>
                 </div>
