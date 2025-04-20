@@ -6,11 +6,13 @@ export const Blogs = ({ posts }: { posts: any }): JSX.Element => {
         return <> </>;
     }
 
-    const sortedPosts = posts.sort((a: any, b: any) => {
-        if (a.data.date > b.data.date) return -1;
-        if (a.data.date < b.data.date) return 1;
-        return 0;
-    });
+    const sortedPosts = posts
+        .filter((a: any) => !a.data.draft)
+        .sort((a: any, b: any) => {
+            if (a.data.date > b.data.date) return -1;
+            if (a.data.date < b.data.date) return 1;
+            return 0;
+        });
 
     return (
         <>
