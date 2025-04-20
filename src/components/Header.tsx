@@ -1,19 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import React, { JSX, useEffect } from 'react';
+import React, { JSX, useEffect, useState } from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image';
 
 export const Header = (): JSX.Element => {
 
     const pathname = usePathname()
-    // const searchParams = useSearchParams()
-    // useEffect(() => {
-    //     console.log(`Pathname: ${pathname}`);
-    //     console.log(`searchParams: ${searchParams}`);
-    // }, [pathname, searchParams])
+    const [currentPath, setCurrentPath] = useState<string>('/');
+
+    useEffect(() => {
+        setCurrentPath(pathname);
+    }, [pathname])
 
     return (
         <header className="pointer-events-none relative z-50 flex flex-none flex-col">
@@ -38,24 +38,29 @@ export const Header = (): JSX.Element => {
                                             </svg>
                                             </button>
                                         </div>
+
                                         <nav className="pointer-events-auto hidden md:block">
                                             <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
                                                 <li>
-                                                    <Link className="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400" href="/">About</Link>
+                                                    <Link className={`relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/' ? 'text-teal-500' : ''}`} href="/">About
+                                                        {currentPath === '/' && (
+                                                            <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
+                                                        )}
+                                                    </Link>
                                                 </li>
                                                 <li>
-                                                    <Link className="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400" href="/blog">Articles</Link>
+                                                    <Link className={`relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/blog' ? 'text-teal-500' : ''}`} href="/blog">Articles
+                                                        {currentPath === '/blog' && (
+                                                            <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
+                                                        )}
+                                                    </Link>
                                                 </li>
-                                                {/* <li> */}
-                                                {/*     <a className="relative block px-3 py-2 transition text-teal-500 dark:text-teal-400" href="/projects">Projects<span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"> */}
-                                                {/*     </span> */}
-                                                {/*     </a> */}
-                                                {/* </li> */}
-                                                {/* <li> */}
-                                                {/*     <a className="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400" href="/speaking">Speaking</a> */}
-                                                {/* </li> */}
                                                 <li>
-                                                    <Link className="relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400" href="/hire-me">For-Hire</Link>
+                                                    <Link className={`relative block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/hire-me' ? 'text-teal-500' : ''}`} href="/hire-me">For-Hire
+                                                        {currentPath === '/hire-me' && (
+                                                            <span className="absolute inset-x-1 -bottom-px h-px bg-linear-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
+                                                        )}
+                                                    </Link>
                                                 </li>
                                             </ul>
                                         </nav>
