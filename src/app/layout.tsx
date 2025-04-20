@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import '../../styles/globals.css';
 import React from 'react';
 import { ThemeProvider } from 'next-themes';
@@ -7,7 +7,11 @@ import { Footer } from '@/components/Footer';
 import { Main } from '@/components/Main';
 import { Header } from '@/components/Header';
 
-const inter = Inter({ subsets: ['latin'] });
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-space-monserrat',
+});
 
 export const metadata: Metadata = {
     title: 'Gauthaman Sahadevan - Homepage',
@@ -20,8 +24,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'>
-            <body className="h-full bg-zinc-50 dark:bg-black">
+        <html lang='en'
+            className={`${montserrat.variable} scroll-smooth`}>
+            <body className={`${montserrat.className} h-full bg-zinc-50 dark:bg-black`}>
                 <div className="flex w-full">
                     <div className="fixed inset-0 flex justify-center sm:px-8">
                         <div className="flex w-full max-w-7xl lg:px-8">

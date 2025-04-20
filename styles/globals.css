@@ -16,6 +16,13 @@
 /*     } */
 /* } */
 
+/* Core theme configuration */
+@theme {
+  /* Font families */
+  --font-sans: var(--font-space-montserrat), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     /* background: linear-gradient(to bottom, */
