@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { JSX, ReactNode } from "react";
 
 export interface ITypographyProps {
     children: ReactNode;
@@ -8,7 +8,7 @@ export interface ITypographyProps {
 export const Typography = ({
     children,
     type = 'copy',
-}, ITypographyProps): JSX.Element => {
+}: ITypographyProps): JSX.Element => {
 
     switch (type) {
         case 'copy':

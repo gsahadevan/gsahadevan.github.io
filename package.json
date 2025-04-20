@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
+        "@next/mdx": "^15.3.1",
         "@types/jest": "^29.5.14",
         "autoprefixer": "^10.4.21",
         "babel-plugin-import-glob-array": "^0.2.0",
