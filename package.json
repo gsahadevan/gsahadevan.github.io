@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next build; next start",
         "lint": "next lint",
-        "deploy": "touch ./out/.nojekyll && git add out/ && git commit -m \"deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+        "deploy": "touch ./out/.nojekyll && git add out/ && git commit -m \"chore: deploy to GitHub pages\" && git subtree push --prefix out origin gh-pages"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
