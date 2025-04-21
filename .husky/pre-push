@@ -1,3 +1,3 @@
-# This script is run before committing changes to the repository.
+# This script is run before pushing to the remote repository.
 # It checks if the branch name follows the naming convention.
 ./.husky/check-branch-name.sh
