@@ -1,23 +1,23 @@
 import { JSX } from 'react';
 import { BlogTile } from './BlogTile';
-import type { Blog } from 'contentlayer/generated';
+import { BlogContent } from 'src/api/blog.types';
 
-export const Blogs = ({ blogs }: { blogs: Blog[] }): JSX.Element => {
+export const Blogs = ({ blogs }: { blogs: BlogContent[] }): JSX.Element => {
     if (!blogs) {
         return <> </>;
     }
 
     const sortedBlogs = blogs
-        .filter((blog: Blog) => !blog.draft)
-        .sort((blogA: Blog, blogB: Blog) => {
-            if (blogA.date > blogB.date) return -1;
-            if (blogA.date < blogB.date) return 1;
+        .filter((blog: BlogContent) => !blog.data.draft)
+        .sort((blogA: BlogContent, blogB: BlogContent) => {
+            if (blogA.data.date > blogB.data.date) return -1;
+            if (blogA.data.date < blogB.data.date) return 1;
             return 0;
         });
 
     return (
         <>
-            {sortedBlogs.map((blog: Blog, index: number) => (
+            {sortedBlogs.map((blog: BlogContent, index: number) => (
                 <BlogTile key={index} blog={blog} />
             ))}
         </>

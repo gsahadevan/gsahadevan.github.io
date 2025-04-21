@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import { getAllSlugs, getPostContent } from '../../../api';
 import Link from 'next/link';
 import { formatDate } from 'src/utils/format';
-import { Blog } from 'contentlayer/generated';
 
 export const generateStaticParams = async () => {
     const slugs = getAllSlugs();
@@ -12,8 +11,8 @@ export const generateStaticParams = async () => {
     }));
 };
 
-const BlogPage = (blog: Blog) => {
-    const slug = blog.slug;
+const BlogPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+    const { slug } = await params;
     const { data, content } = getPostContent(slug);
 
     return (
