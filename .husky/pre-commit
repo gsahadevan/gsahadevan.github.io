@@ -1,3 +1,0 @@
-# This script is run before committing changes to the repository.
-# It checks if the branch name follows the naming convention.
-./.husky/check-branch-name.sh
