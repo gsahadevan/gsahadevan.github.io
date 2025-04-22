@@ -60,17 +60,11 @@ export const Header = (): JSX.Element => {
                                                                 </svg>
                                                             </button>
                                                         </Popover.Button>
-                                                        <Transition
-                                                            as={Fragment}
-                                                            enter='transition ease-out duration-200'
-                                                            enterFrom='opacity-0 translate-y-1'
-                                                            enterTo='opacity-100 translate-y-0'
-                                                            leave='transition ease-in duration-150'
-                                                            leaveFrom='opacity-100 translate-y-0'
-                                                            leaveTo='opacity-0 translate-y-1'>
-                                                            <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl'>
+                                                        <Popover.Overlay className='fixed inset-0 bg-black opacity-30 blur-lg backdrop-blur-3xl' />
+                                                        <Popover.Panel>
+                                                            {({ close }) => (
                                                                 <div
-                                                                    className='fixed inset-x-4 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800'
+                                                                    className='top-4 fixed inset-x-4 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800'
                                                                     id='headlessui-popover-panel-:Rrmiqja:'
                                                                     data-headlessui-state='open'
                                                                     data-open=''>
@@ -79,6 +73,7 @@ export const Header = (): JSX.Element => {
                                                                             aria-label='Close menu'
                                                                             className='-m-1 p-1'
                                                                             type='button'
+                                                                            onClick={() => close()}
                                                                             data-headlessui-state='open active'
                                                                             data-open=''
                                                                             data-active=''>
@@ -104,29 +99,32 @@ export const Header = (): JSX.Element => {
                                                                             <li>
                                                                                 <Link
                                                                                     className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/' ? 'text-teal-500' : ''}`}
-                                                                                    href='/'>
+                                                                                    href='/'
+                                                                                    onClick={() => close()}>
                                                                                     About
                                                                                 </Link>
                                                                             </li>
                                                                             <li>
                                                                                 <Link
                                                                                     className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/blog' ? 'text-teal-500' : ''}`}
-                                                                                    href='/blog'>
+                                                                                    href='/blog'
+                                                                                    onClick={() => close()}>
                                                                                     Articles
                                                                                 </Link>
                                                                             </li>
                                                                             <li>
                                                                                 <Link
                                                                                     className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/hire-me' ? 'text-teal-500' : ''}`}
-                                                                                    href='/hire-me'>
+                                                                                    href='/hire-me'
+                                                                                    onClick={() => close()}>
                                                                                     For-Hire
                                                                                 </Link>
                                                                             </li>
                                                                         </ul>
                                                                     </nav>
                                                                 </div>
-                                                            </Popover.Panel>
-                                                        </Transition>
+                                                            )}
+                                                        </Popover.Panel>
                                                     </>
                                                 )}
                                             </Popover>
