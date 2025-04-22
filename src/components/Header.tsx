@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import React, { JSX, useEffect, useState } from 'react';
+import React, { Fragment, JSX, useEffect, useState } from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { Popover, Transition } from '@headlessui/react';
 
 export const Header = (): JSX.Element => {
     const pathname = usePathname();
@@ -36,26 +37,99 @@ export const Header = (): JSX.Element => {
                                         </div>
                                     </div>
                                     <div className='flex flex-1 justify-end md:justify-center'>
-                                        <div className='pointer-events-auto md:hidden' data-headlessui-state=''>
-                                            <button
-                                                className='group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20'
-                                                type='button'
-                                                aria-expanded='false'
-                                                data-headlessui-state=''
-                                                id='headlessui-popover-button-:Rbmiqja:'>
-                                                Menu
-                                                <svg
-                                                    viewBox='0 0 8 6'
-                                                    aria-hidden='true'
-                                                    className='ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400'>
-                                                    <path
-                                                        d='M1.75 1.75 4 4.25l2.25-2.5'
-                                                        fill='none'
-                                                        strokeWidth='1.5'
-                                                        strokeLinecap='round'
-                                                        strokeLinejoin='round'></path>
-                                                </svg>
-                                            </button>
+                                        <div className='pointer-events-auto md:hidden'>
+                                            <Popover className=''>
+                                                {({ open }) => (
+                                                    <>
+                                                        <Popover.Button>
+                                                            <button
+                                                                className='cursor-pointer group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20'
+                                                                type='button'
+                                                                aria-expanded='false'>
+                                                                Menu
+                                                                <svg
+                                                                    viewBox='0 0 8 6'
+                                                                    aria-hidden='true'
+                                                                    className='ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400'>
+                                                                    <path
+                                                                        d='M1.75 1.75 4 4.25l2.25-2.5'
+                                                                        fill='none'
+                                                                        strokeWidth='1.5'
+                                                                        strokeLinecap='round'
+                                                                        strokeLinejoin='round'></path>
+                                                                </svg>
+                                                            </button>
+                                                        </Popover.Button>
+                                                        <Transition
+                                                            as={Fragment}
+                                                            enter='transition ease-out duration-200'
+                                                            enterFrom='opacity-0 translate-y-1'
+                                                            enterTo='opacity-100 translate-y-0'
+                                                            leave='transition ease-in duration-150'
+                                                            leaveFrom='opacity-100 translate-y-0'
+                                                            leaveTo='opacity-0 translate-y-1'>
+                                                            <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl'>
+                                                                <div
+                                                                    className='fixed inset-x-4 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-closed:scale-95 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in dark:bg-zinc-900 dark:ring-zinc-800'
+                                                                    id='headlessui-popover-panel-:Rrmiqja:'
+                                                                    data-headlessui-state='open'
+                                                                    data-open=''>
+                                                                    <div className='flex flex-row-reverse items-center justify-between'>
+                                                                        <button
+                                                                            aria-label='Close menu'
+                                                                            className='-m-1 p-1'
+                                                                            type='button'
+                                                                            data-headlessui-state='open active'
+                                                                            data-open=''
+                                                                            data-active=''>
+                                                                            <svg
+                                                                                viewBox='0 0 24 24'
+                                                                                aria-hidden='true'
+                                                                                className='h-6 w-6 text-zinc-500 dark:text-zinc-400'>
+                                                                                <path
+                                                                                    d='m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5'
+                                                                                    fill='none'
+                                                                                    stroke='currentColor'
+                                                                                    strokeWidth='1.5'
+                                                                                    strokeLinecap='round'
+                                                                                    strokeLinejoin='round'></path>
+                                                                            </svg>
+                                                                        </button>
+                                                                        <h2 className='text-sm font-medium text-zinc-600 dark:text-zinc-400'>
+                                                                            Navigation
+                                                                        </h2>
+                                                                    </div>
+                                                                    <nav className='mt-6'>
+                                                                        <ul className='-my-2 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
+                                                                            <li>
+                                                                                <Link
+                                                                                    className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/' ? 'text-teal-500' : ''}`}
+                                                                                    href='/'>
+                                                                                    About
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li>
+                                                                                <Link
+                                                                                    className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/blog' ? 'text-teal-500' : ''}`}
+                                                                                    href='/blog'>
+                                                                                    Articles
+                                                                                </Link>
+                                                                            </li>
+                                                                            <li>
+                                                                                <Link
+                                                                                    className={`relative block py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${currentPath === '/hire-me' ? 'text-teal-500' : ''}`}
+                                                                                    href='/hire-me'>
+                                                                                    For-Hire
+                                                                                </Link>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </nav>
+                                                                </div>
+                                                            </Popover.Panel>
+                                                        </Transition>
+                                                    </>
+                                                )}
+                                            </Popover>
                                         </div>
 
                                         <nav className='pointer-events-auto hidden md:block'>
