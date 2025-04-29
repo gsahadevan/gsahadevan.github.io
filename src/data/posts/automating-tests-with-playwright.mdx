@@ -1,0 +1,270 @@
+---
+title: 'Automating Tests with Playwright'
+summary: ''
+image: ''
+date: '2025-04-29T20:43:07.322Z'
+draft: false
+tags: [draft]
+---
+
+# What is Playwright?
+
+Playwright is a modern web testing and automation framework created by Microsoft. It's used to automate browsers like Chrome, Firefox, Safari (Webkit), and Edge in a way that's fast, reliable, and powerful. It can be used as a library or test framework.
+
+It is Closer to Selenium WebDriver than Cypress.
+
+> #### Why?
+>
+> An out-of-process automation driver that is not limited by the scope of in-page JavaScript execution. This was one of Cypress's limitations.
+> Playwright on the other hand drives the browser that's being used from the outside like Selenium WebDriver, rather than being baked into the browser.
+
+### Playwright as a test-framework
+
+- Built-in test runner similar syntax to Jest.
+- Runs tests in parallel, with ability to enable retries.
+- Useful built-in reporters with screenshots, videos and trace viewers.
+- VS Code extension, which help in building and maintaining tests.
+
+### Why Playwright?
+
+- Can run API/UI regression tests with same framework.
+- Error handling is better.
+- Project configurations are flexibility.
+- Auto-waiting locators and retry abilities.
+
+### Why should a large Org use it?
+
+- Using Playwright for API/UI regression testing gives confidence in future releases
+
+### It should have some limitations right?
+
+With using Playwright you won't able to test across all supported browsers and all versions of browsers with Playwright.
+Only the versions of the browsers that are bundled with your current version of Playwright.
+This is one of the limitations with Playwright. You will only be able to test with the browser versions bundled with the release you are using. The Playwright team works to support the latest browser versions for each release.
+
+### Some useful commands
+
+```bash
+npx playwright test --headed
+npx playwright test --project chromium
+npx playwright test --project chromium firefox
+npx playwright test tests/example.spec.ts
+npx playwright test tests/example.spec.ts:10
+npx playwright test --grep @first // using tags
+npx playwright test --grep-invert @first
+npx playwright codegen
+```
+
+### Add these to your package.json
+
+```json
+{
+    "scripts": {
+        "test": "npx playwright test",
+        "test:chromium": "npx playwright test --project chromium",
+        "test:first": "npx playwright test --grep @first",
+        "test:local": "BASE_URL=https://localhost:4200 npx playwright test",
+        "test:report": "npx playwright test && npx playwright show-report",
+        "test:ui": "npx playwright test --ui"
+    }
+}
+```
+
+# 02. Creating Playwright tests
+
+## 02.01. Generating tests with codegen
+
+Playwright's Code Gen tool helps generate code by recording interactions with the web application, providing a head start in creating tests.
+
+`npx playwright codegen` is a command that generates Playwright tests by recording your interactions with a web
+application. It opens a browser window and captures your actions, generating the corresponding test code in real-time.
+
+#### Locator Strategies
+
+- Recommended built-in locators
+- CSS selectors, XPATH, and legacy locators
+
+#### Built-in Locator Examples
+
+```bash
+# page.getByRole()
+await page.getByRole('button', { name: 'Sign in' }).click();
+
+# page.getByText()
+await expect(page.getByText('Jane Doe')).toBeVisible();
+
+# page.getByLabel()
+await page.getByLabel('username').fill('email@test.com');
+
+# page.getByPlaceHolder()
+
+# page.getByAltText()
+
+# page.getByTitle()
+
+# page.getByTestId()
+await page.getByTestId('nav-sign-in').click();
+
+# page.locator() // legacy
+await page.locator('[data-test="nav-sign-in"]').click();
+
+# Using CSS locators // would fail if there are multiple buttons
+await page.locator('css=button').click();
+
+# CSS and matching text
+await page.locator('article:hastext("Playwright")').click();
+
+# Clicks a button that has either "Login" or "Signin" text
+# Most tests should be deterministic, but could be useful for A/B testing.
+await page.locator('button:has-text("Login"), button:has-text("Signin")').click();
+
+# Last but not the least,
+# Using XPath // difficult to maintain and less readable
+await page.locator('xpath=//button').click();
+```
+
+### How to do Assertions?
+
+There are two ways to assert
+
+- Locator assertions - fails automatically retries or till reaches timeout
+- Value assertions - will be done only once, so either passes or fails
+
+#### Locator Assertion Examples
+
+```bash
+await expect(locator).toBeVisible();
+await expect(locator).toContainText();
+await expect(locator).toHaveCount();
+await expect(page).toHaveURL();
+```
+
+#### Value Assertion Examples
+
+```bash
+expect(value).toBe();
+expect(value).toContain();
+expect(value).toEqual();
+expect(value).toBeTruthy();
+expect(value).toHaveLength();
+```
+
+#### A rough example of entire test
+
+```bash
+import { test, expect } from '@playwright/test';
+
+test('Home page', async ({ page }) => {
+    await page.goto('https://practicesoftwaretesting.com/');
+
+    await expect(page.getByTestId('nav-sign-in')).toHaveText('Sign in'));
+
+    await expect(page).toHaveTitle('');
+
+    const productGrid = page.locator(".col-md-p");
+    await expect(productGrid.getByRole("link")).toHaveCount(9);
+    // locator assertion
+    expect(await productGrid.getByRole("link").count()).toBe(9);
+    // non-locator assertion
+
+    await page.getByTestId("search-query").fill("Hammer");
+    await page.getByTestId("search-submit").click();
+    await expect(productGrid.getByRole("link")).toHaveCount(1);
+    await expect(page.getByAltText("Hammer")).toBeVisible();
+});
+```
+
+## 02.04. Structuring Playwright tests
+
+- **Group Tests**: Use the describe block to group related tests together, making your test structure more organized.
+- **Setup and Teardown**: Utilize before all, before each, and after each blocks to run setup and teardown code, ensuring each test runs in a clean environment.
+- **Clear Test Names**: Give your tests clear and descriptive names to easily identify where failures occur.
+- **Avoid Duplication**: Aim to keep your code DRY (Don't Repeat Yourself) by avoiding code duplication, which will be covered in more detail in later lessons.
+
+#### A little more organized example, using DRY principle
+
+```bash
+import { test, expect } from '@playwright/test';
+
+test.describe("Home Page", () => {
+
+    test.beforeEach(async ({ page }) => {
+        await page.goto('https://practicesoftwaretesting.com/');
+    });
+
+    test("check sign-in", async ({ page }) => {
+        await expect(page.getByTestId('nav-sign-in')).toHaveText('Sign in'));
+    });
+
+    test("validate page title", async ({ page }) => {
+        await expect(page).toHaveTitle('');
+    });
+
+    // ...
+});
+```
+
+#### Using CSS
+
+```bash
+await expect(
+    page.locator(".step-indicator").filter({ hasText: "2" })
+).toHaveCSS("background-color", "rgb(51, 153, 51)");
+
+await page.getByTestId("payment-method").selectOption("Buy now");
+```
+
+## 02.05. Handling authentication using cookies
+
+These steps help streamline the process of handling cookie authentication in your Playwright tests, making them more efficient and maintainable.
+
+- **Storing Authentication State**: Use Playwright's tools to store an authentication state to avoid repeating login steps for each test, which saves time and reduces code repetition.
+- **Setup Project**: Create a setup project in the Playwright config file to handle authentication and save the state for use in other tests.
+- **Using** `storageState`: Save the browser context's storage state to a file and use it in subsequent tests to maintain the logged-in state without re-authenticating.
+
+## 02.06. Visual testing
+
+## 02.07. API testing
+
+# 03. Maintaining Playwright tests
+
+Maintaining automated tests is as crucial as writing them. It involves analyzing test results and making necessary updates to keep tests relevant.
+
+## 03.01. When can a test fail?
+
+- There is an actual bug
+- The system changed, but it was intended (its a new feature)
+- Flakey test - works sometimes, doesn't work sometime (bad testing method, wrong assertions etc)
+- Flakey infra - code, logic, test cases are fine but server crashes due to overload, db timeout etc
+
+> #### What is a Flakey test?
+>
+> These are tests that pass or fail inconsistently. They often result from poor test practices, such as not accounting for dynamic content or using unreliable test data.
+
+Playwright offers a rich set of features to help maintain tests, including tools for reviewing and inspecting failed tests.
+
+## 03.02. Playwright screenshots, videos and reporters
+
+The command `npx playwright show-report` can be used to show the `html` report.
+The reports would be available in the `playwright-report` directory and can be uploaded to a S3 bucket.
+
+To add more options, go to `playwright.config.ts` and update the reporter prop `reporter: "html",` to `reporter: [["html"], ["list"]],`
+
+The `list` is shown during the run in the terminal, really useful when testing in local or ci.
+There are other built-ins like `blob` reporter, `json` and `junit` (which is also widely used and can be imported to other tools)
+You could also write your own custom reporter or add a third party reporter
+
+- **Built-in Test Reporters**: Playwright offers various built-in test reporters, such as HTML, List, Blob, JSON, and JUnit reporters, which help in analyzing test results.
+- **Screenshots and Videos**: Enabling screenshots and videos for each test run helps in visualizing the test execution and debugging issues.
+- **HTML Reporter**: The HTML reporter provides a detailed view of test results, including screenshots and videos, and can be easily shared via web servers.
+- **Customization**: Playwright supports multiple reporters and allows for custom or third-party reporters to meet specific needs.
+
+## 03.03. Playwright trace viewer
+
+A trace viewer provides observability to the project.
+
+## 03.04. Scaling Playwright tests
+
+- **Organization and Maintainability**: Organize your tests by creating folders for different test types (e.g., API, checkout, homepage, login) to improve maintainability.
+- **Abstracting Complex Logic**: Use functions, page object classes, or Playwright fixtures to abstract complex logic from your test files, making your code cleaner and more reusable.
+- **Environment Variables**: Implement environment variables using a .env file to run test automation scripts across multiple environments, enhancing scalability.
