@@ -39,9 +39,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 yarn dev # to run and test the application
 git add .
 git commit -m 'Message'
-git push 
+git push
 
 yarn build
 yarn export
 yarn deploy # deploy the changes to gh-pages, changes would reflect in 1 min
+
+EXPORT=1 UNOPTIMIZED=1 yarn build ; yarn deploy
 ```
